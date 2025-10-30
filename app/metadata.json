@@ -1,0 +1,31 @@
+{
+  "/": {
+    "title": "WEMARK Property Investment - Premium House Development Projects | South Australia",
+    "description": "Invest in premium house development projects with WEMARK. We acquire land, build quality homes, and deliver exceptional returns to investors. Proven track record with 18-25% average returns.",
+    "openGraph": {
+      "images": "https://images.pexels.com/photos/7031607/pexels-photo-7031607.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+    }
+  },
+  "/projects": {
+    "title": "Investment Projects - WEMARK Property Development | House & Land Opportunities",
+    "description": "Browse our current house development investment opportunities. Premium projects across South Australia with expected returns of 16-25%. Secure your investment position today.",
+    "openGraph": {
+      "images": "https://images.pexels.com/photos/5997993/pexels-photo-5997993.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+    }
+  },
+  "/projects/[id]": {
+    "title": "Project Details - WEMARK Property Investment | Premium House Development",
+    "description": "Detailed information about our premium house development project. Investment details, expected returns, timeline, and features. Contact us to secure your investment.",
+    "openGraph": {
+      "images": "https://images.pexels.com/photos/7031407/pexels-photo-7031407.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+    }
+  },
+  "/contact": {
+    "title": "Contact WEMARK - Property Investment Specialists | Get In Touch",
+    "description": "Contact WEMARK's property investment team. Get expert advice on house development investments, portfolio management, and secure your investment opportunity today.",
+    "openGraph": {
+      "images": "https://images.pexels.com/photos/7031607/pexels-photo-7031607.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+    }
+  }
+}
+
