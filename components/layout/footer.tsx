@@ -11,7 +11,7 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <div className="mb-6">
               <img 
-                src="https://www.wemark.com.au/assets/images/logo1.svg" 
+                src="/footer-logo1.svg" 
                 alt="WEMARK" 
                 className="h-8 w-auto mb-4"
               />

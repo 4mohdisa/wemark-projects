@@ -278,17 +278,17 @@ export default function WemarkHomepage() {
             </div>
             
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-              Real estate that's about <span style={{ color: 'var(--bg-primary)' }}>boosting</span> life's best things
+              <span style={{ color: 'var(--bg-primary)' }}>Invest</span> and enjoy the <span style={{ color: 'var(--bg-primary)' }}>returns</span>
             </h1>
             
             <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto" style={{ color: 'var(--text-white-90)' }}>
-              We specialize in strategic land acquisition, premium house construction, and delivering exceptional returns to our investment partners across South Australia.
+              We source premium land, build quality homes, and sell them to deliver exceptional returns. Your trusted partner in South Australian property investment.
             </p>
             
             {/* Stats Row */}
             <div className="grid grid-cols-3 gap-6 mb-8 max-w-2xl mx-auto">
               <div>
-                <div className="text-2xl md:text-3xl font-bold" style={{ color: 'var(--bg-primary)' }}>$50M+</div>
+                <div className="text-2xl md:text-3xl font-bold" style={{ color: 'var(--bg-primary)' }}>$25M+</div>
                 <div className="text-sm" style={{ color: 'var(--text-white-80)' }}>Projects Completed</div>
               </div>
               <div>
@@ -327,74 +327,6 @@ export default function WemarkHomepage() {
         </div>
       </section>
 
-      {/* Highlights Strip */}
-      <section className="py-16" style={{ backgroundColor: 'var(--bg-dark)' }}>
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: 'var(--bg-primary)' }}>
-              We're giving away $20,000 across two exciting draws!
-            </h2>
-            <p className="text-lg" style={{ color: 'var(--text-white-90)' }}>
-              Join our investment community and be part of our success story
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            {/* Left Side - Image */}
-            <div className="relative">
-              <img 
-                src="https://images.pexels.com/photos/8469941/pexels-photo-8469941.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
-                alt="Professional property investment consultation"
-                className="rounded-2xl shadow-2xl w-full h-80 object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#1A2D3B]/40 to-transparent rounded-2xl"></div>
-            </div>
-            
-            {/* Right Side - Content */}
-            <div className="space-y-6">
-              <div className="flex items-center gap-4">
-                <div className="w-16 h-16 rounded-full flex items-center justify-center" 
-                     style={{ backgroundColor: 'var(--color-secondary)' }}>
-                  <DollarSign className="w-8 h-8 text-white" />
-                </div>
-                <div>
-                  <h3 className="text-2xl font-bold" style={{ color: 'var(--color-accent)' }}>
-                    $10,000 Prize for Property Investors
-                  </h3>
-                  <p className="opacity-80" style={{ color: 'var(--color-accent)' }}>
-                    Exclusive rewards for our investment partners
-                  </p>
-                </div>
-              </div>
-              
-              <div className="flex items-center gap-4">
-                <div className="w-16 h-16 rounded-full flex items-center justify-center" 
-                     style={{ backgroundColor: 'var(--color-secondary)' }}>
-                  <Home className="w-8 h-8 text-white" />
-                </div>
-                <div>
-                  <h3 className="text-2xl font-bold" style={{ color: 'var(--color-accent)' }}>
-                    $10,000 Prize for Property Seekers
-                  </h3>
-                  <p className="opacity-80" style={{ color: 'var(--color-accent)' }}>
-                    Supporting your property ownership journey
-                  </p>
-                </div>
-              </div>
-              
-              <div className="pt-4">
-                <Button 
-                  onClick={scrollToContact}
-                  className="px-8 py-4 text-lg rounded-lg font-medium transition-all hover:scale-105 shadow-lg"
-                  style={{ backgroundColor: 'var(--color-secondary)', color: 'white' }}
-                >
-                  Learn More About Prizes
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Featured Projects Section */}
       <section id="featured-projects" className="py-20" style={{ backgroundColor: 'var(--color-light-beige)' }}>
@@ -1059,7 +991,7 @@ export default function WemarkHomepage() {
                 Discover what makes us different
               </h2>
               <p className="text-lg mb-8 leading-relaxed" style={{ color: 'var(--color-accent)', opacity: 0.9 }}>
-                WEMARK specializes in strategic property investment and development across South Australia. Our unique approach combines market expertise, professional project management, and transparent investor relations to deliver consistent returns.
+                WEMARK sources premium land, builds quality homes, and sells them to deliver exceptional returns. Our streamlined approach combines strategic land acquisition, professional construction management, and transparent investor relations.
               </p>
               
               <div className="space-y-6 mb-8">
@@ -1073,7 +1005,7 @@ export default function WemarkHomepage() {
                       Proven Track Record
                     </h3>
                     <p className="opacity-80" style={{ color: 'var(--color-accent)' }}>
-                      Over $50M in successful projects with consistent 15-25% returns for our investment partners.
+                      Over $25M in successful projects with consistent 15-25% returns for our investment partners.
                     </p>
                   </div>
                 </div>
@@ -1132,7 +1064,7 @@ export default function WemarkHomepage() {
                 <Card className="p-4 backdrop-blur-sm border-0" style={{ backgroundColor: 'rgba(234, 223, 207, 0.95)' }}>
                   <div className="grid grid-cols-3 gap-4 text-center">
                     <div>
-                      <div className="text-2xl font-bold" style={{ color: 'var(--color-secondary)' }}>$50M+</div>
+                      <div className="text-2xl font-bold" style={{ color: 'var(--color-secondary)' }}>$25M+</div>
                       <div className="text-xs opacity-70" style={{ color: 'var(--text-primary)' }}>Projects</div>
                     </div>
                     <div>
@@ -1147,6 +1079,85 @@ export default function WemarkHomepage() {
                 </Card>
               </div>
             </div>
+          </div>
+        </div>
+        
+        {/* Team Members Section */}
+        <div className="py-20 mt-20" style={{ backgroundColor: '#f8f9fa' }}>
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6" style={{ color: '#1A2D3B' }}>
+              Meet Our Team
+            </h2>
+            <p className="text-lg" style={{ color: '#4a5568' }}>
+              The experts behind your investment success
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {/* Chirag Chavda */}
+            <div className="text-center">
+              <div className="relative mb-6">
+                <img 
+                  src="/Chirag Chavda.webp"
+                  alt="Chirag Chavda"
+                  className="w-48 h-48 rounded-full mx-auto object-cover shadow-xl"
+                />
+                <div className="absolute inset-0 rounded-full bg-gradient-to-t from-[#1A2D3B]/20 to-transparent"></div>
+              </div>
+              <h3 className="text-2xl font-bold mb-2" style={{ color: '#1A2D3B' }}>
+                Chirag Chavda
+              </h3>
+              <p className="text-lg font-medium mb-4" style={{ color: '#D4A574' }}>
+                Director/Project Manager
+              </p>
+              <p className="text-sm leading-relaxed" style={{ color: '#4a5568' }}>
+                Leading strategic project development and ensuring exceptional delivery standards across all WEMARK developments.
+              </p>
+            </div>
+            
+            {/* Parm Singh */}
+            <div className="text-center">
+              <div className="relative mb-6">
+                <img 
+                  src="/Parm Singh.webp"
+                  alt="Parm Singh"
+                  className="w-48 h-48 rounded-full mx-auto object-cover shadow-xl"
+                />
+                <div className="absolute inset-0 rounded-full bg-gradient-to-t from-[#1A2D3B]/20 to-transparent"></div>
+              </div>
+              <h3 className="text-2xl font-bold mb-2" style={{ color: '#1A2D3B' }}>
+                Parm Singh
+              </h3>
+              <p className="text-lg font-medium mb-4" style={{ color: '#D4A574' }}>
+                Principal
+              </p>
+              <p className="text-sm leading-relaxed" style={{ color: '#4a5568' }}>
+                Driving company vision and strategic growth while maintaining our commitment to investor success and quality development.
+              </p>
+            </div>
+            
+            {/* Ravin */}
+            <div className="text-center">
+              <div className="relative mb-6">
+                <img 
+                  src="/Ravin Amingad.webp"
+                  alt="Ravin Amingad"
+                  className="w-48 h-48 rounded-full mx-auto object-cover shadow-xl"
+                />
+                <div className="absolute inset-0 rounded-full bg-gradient-to-t from-[#1A2D3B]/20 to-transparent"></div>
+              </div>
+              <h3 className="text-2xl font-bold mb-2" style={{ color: '#1A2D3B' }}>
+                Ravin
+              </h3>
+              <p className="text-lg font-medium mb-4" style={{ color: '#D4A574' }}>
+                Sales Agent
+              </p>
+              <p className="text-sm leading-relaxed" style={{ color: '#4a5568' }}>
+                Connecting investors with premium opportunities and providing expert guidance throughout the investment journey.
+              </p>
+            </div>
+          </div>
           </div>
         </div>
       </section>
