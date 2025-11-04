@@ -152,6 +152,14 @@ interface ProjectDetailsPageContentProps {
 
 export default function ProjectDetailsPageContent({ projectId }: ProjectDetailsPageContentProps) {
   const [selectedImage, setSelectedImage] = useState(0)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isInspectionDialogOpen, setIsInspectionDialogOpen] = useState(false)
+  const [inspectionForm, setInspectionForm] = useState({
+    fullName: '',
+    email: '',
+    phone: '',
+    projectId: projectId
+  })
   
   const project = investmentProjects.find(p => p.id === parseInt(projectId))
 
@@ -183,7 +191,7 @@ export default function ProjectDetailsPageContent({ projectId }: ProjectDetailsP
       <Header />
 
       {/* Hero Section with Full-Width Image Carousel */}
-      <section className="py-8">
+      <section className="pt-24 pb-8">
         <div className="container mx-auto px-4">
           {/* Full-Width Image Carousel */}
           <div className="mb-8">
@@ -193,7 +201,8 @@ export default function ProjectDetailsPageContent({ projectId }: ProjectDetailsP
                 <img 
                   src={project.gallery[selectedImage]} 
                   alt={project.title}
-                  className="w-full h-96 md:h-[500px] object-cover"
+                  className="w-full h-96 md:h-[500px] object-cover cursor-pointer"
+                  onClick={() => setIsModalOpen(true)}
                 />
                 <Badge 
                   className="absolute top-4 left-4 text-white font-medium px-3 py-1"
@@ -328,13 +337,10 @@ export default function ProjectDetailsPageContent({ projectId }: ProjectDetailsP
                         <div className="font-bold text-lg" style={{ color: 'var(--color-primary)' }}>Peter Singh</div>
                         <div className="text-sm mb-1" style={{ color: 'var(--color-secondary)' }}>Senior Sales Agent</div>
                         <div className="text-sm" style={{ color: 'var(--color-primary)', opacity: 0.7 }}>
-                          <div>📞 0418 820 1234</div>
-                          <div>✉️ peter@wemark.com.au</div>
+                          <div>0418 820 1234</div>
+                          <div>peter@wemark.com.au</div>
                         </div>
                       </div>
-                    </div>
-                    <div className="text-xs" style={{ color: 'var(--color-primary)', opacity: 0.6 }}>
-                      "Specializing in investment properties with 8+ years experience"
                     </div>
                   </div>
 
@@ -352,13 +358,10 @@ export default function ProjectDetailsPageContent({ projectId }: ProjectDetailsP
                         <div className="font-bold text-lg" style={{ color: 'var(--color-primary)' }}>Cheng Chandra</div>
                         <div className="text-sm mb-1" style={{ color: 'var(--color-secondary)' }}>Sales Associate</div>
                         <div className="text-sm" style={{ color: 'var(--color-primary)', opacity: 0.7 }}>
-                          <div>📞 0418 820 5678</div>
-                          <div>✉️ cheng@wemark.com.au</div>
+                          <div>0418 820 5678</div>
+                          <div>cheng@wemark.com.au</div>
                         </div>
                       </div>
-                    </div>
-                    <div className="text-xs" style={{ color: 'var(--color-primary)', opacity: 0.6 }}>
-                      "Expert in property development and investor relations"
                     </div>
                   </div>
                 </div>
@@ -372,14 +375,7 @@ export default function ProjectDetailsPageContent({ projectId }: ProjectDetailsP
                     Call Agent
                   </Button>
                   <Button 
-                    variant="outline"
-                    className="w-full py-3 text-lg font-medium hover:bg-opacity-10 transition-all"
-                    style={{ borderColor: 'var(--color-secondary)', color: 'var(--color-secondary)' }}
-                  >
-                    <Mail size={20} className="mr-2" />
-                    Email Agent
-                  </Button>
-                  <Button 
+                    onClick={() => setIsInspectionDialogOpen(true)}
                     variant="outline"
                     className="w-full py-3 text-lg font-medium hover:bg-opacity-10 transition-all"
                     style={{ borderColor: 'var(--color-secondary)', color: 'var(--color-secondary)' }}
@@ -426,6 +422,188 @@ export default function ProjectDetailsPageContent({ projectId }: ProjectDetailsP
 
       {/* Footer */}
       <Footer />
+
+      {/* Book Inspection Dialog */}
+      {isInspectionDialogOpen && (
+        <div 
+          className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4"
+          onClick={() => setIsInspectionDialogOpen(false)}
+        >
+          <div 
+            className="bg-white rounded-2xl p-6 w-full max-w-md"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex justify-between items-center mb-6">
+              <h2 className="text-2xl font-bold" style={{ color: 'var(--color-primary)' }}>
+                Book Inspection
+              </h2>
+              <button
+                onClick={() => setIsInspectionDialogOpen(false)}
+                className="p-1 hover:bg-gray-100 rounded-full transition-colors"
+              >
+                <svg className="w-6 h-6" style={{ color: 'var(--color-primary)' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
+            <form onSubmit={(e) => {
+              e.preventDefault();
+              // Handle form submission here
+              console.log('Inspection booking:', inspectionForm);
+              setIsInspectionDialogOpen(false);
+              // Reset form
+              setInspectionForm({
+                fullName: '',
+                email: '',
+                phone: '',
+                projectId: projectId
+              });
+            }}>
+              <div className="space-y-4">
+                {/* Project Info */}
+                <div className="p-3 rounded-lg" style={{ backgroundColor: 'var(--color-light-beige)' }}>
+                  <div className="text-sm font-medium" style={{ color: 'var(--color-primary)', opacity: 0.7 }}>
+                    Enquiring about:
+                  </div>
+                  <div className="font-bold" style={{ color: 'var(--color-primary)' }}>
+                    {project.title}
+                  </div>
+                  <div className="text-sm" style={{ color: 'var(--color-primary)', opacity: 0.7 }}>
+                    {project.location}
+                  </div>
+                </div>
+
+                {/* Full Name */}
+                <div>
+                  <label className="block text-sm font-medium mb-2" style={{ color: 'var(--color-primary)' }}>
+                    Full Name *
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    value={inspectionForm.fullName}
+                    onChange={(e) => setInspectionForm({...inspectionForm, fullName: e.target.value})}
+                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:border-transparent"
+                    style={{ '--tw-ring-color': 'var(--color-secondary)' } as React.CSSProperties}
+                    placeholder="Enter your full name"
+                  />
+                </div>
+
+                {/* Email */}
+                <div>
+                  <label className="block text-sm font-medium mb-2" style={{ color: 'var(--color-primary)' }}>
+                    Email Address *
+                  </label>
+                  <input
+                    type="email"
+                    required
+                    value={inspectionForm.email}
+                    onChange={(e) => setInspectionForm({...inspectionForm, email: e.target.value})}
+                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:border-transparent"
+                    style={{ '--tw-ring-color': 'var(--color-secondary)' } as React.CSSProperties}
+                    placeholder="Enter your email address"
+                  />
+                </div>
+
+                {/* Phone Number */}
+                <div>
+                  <label className="block text-sm font-medium mb-2" style={{ color: 'var(--color-primary)' }}>
+                    Phone Number *
+                  </label>
+                  <input
+                    type="tel"
+                    required
+                    value={inspectionForm.phone}
+                    onChange={(e) => setInspectionForm({...inspectionForm, phone: e.target.value})}
+                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:border-transparent"
+                    style={{ '--tw-ring-color': 'var(--color-secondary)' } as React.CSSProperties}
+                    placeholder="Enter your phone number"
+                  />
+                </div>
+              </div>
+
+              <div className="flex gap-3 mt-6">
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={() => setIsInspectionDialogOpen(false)}
+                  className="flex-1 py-3"
+                  style={{ borderColor: 'var(--color-secondary)', color: 'var(--color-secondary)' }}
+                >
+                  Cancel
+                </Button>
+                <Button
+                  type="submit"
+                  className="flex-1 py-3"
+                  style={{ backgroundColor: 'var(--color-secondary)', color: 'white' }}
+                >
+                  Book Inspection
+                </Button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* Full-Screen Image Modal */}
+      {isModalOpen && (
+        <div 
+          className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center"
+          onClick={() => setIsModalOpen(false)}
+        >
+          <div className="relative max-w-7xl max-h-full p-4">
+            {/* Close Button */}
+            <button
+              onClick={() => setIsModalOpen(false)}
+              className="absolute top-4 right-4 z-10 bg-white/20 hover:bg-white/30 rounded-full p-2 transition-all"
+            >
+              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
+            {/* Modal Image */}
+            <div className="relative">
+              <img 
+                src={project.gallery[selectedImage]} 
+                alt={project.title}
+                className="max-w-full max-h-[90vh] object-contain rounded-lg"
+                onClick={(e) => e.stopPropagation()}
+              />
+              
+              {/* Modal Navigation */}
+              {project.gallery.length > 1 && (
+                <>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      prevImage();
+                    }}
+                    className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 rounded-full p-3 transition-all"
+                  >
+                    <ChevronLeft size={32} className="text-white" />
+                  </button>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      nextImage();
+                    }}
+                    className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 rounded-full p-3 transition-all"
+                  >
+                    <ChevronRight size={32} className="text-white" />
+                  </button>
+                </>
+              )}
+            </div>
+
+            {/* Image Counter */}
+            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/50 text-white px-4 py-2 rounded-full">
+              {selectedImage + 1} / {project.gallery.length}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
