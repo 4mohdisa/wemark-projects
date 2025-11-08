@@ -40,106 +40,12 @@ import { Badge } from '@/components/ui/badge'
 import { ChevronLeft, ChevronRight, Star, MapPin, Bed, Bath, Car, Phone, Mail, Menu, X, Facebook, Instagram, Youtube, Linkedin, Twitter, Clock, DollarSign, TrendingUp, Shield, Users, CheckCircle, ArrowRight, Building, Home, Calculator } from 'lucide-react'
 import Header from '@/components/layout/header'
 import Footer from '@/components/layout/footer'
+import ContactDialog from '@/components/contact-dialog'
+import projectsData from '@/data/projects.json'
+import { Project } from '@/types/project'
 
-// Investment project data - only house projects
-const investmentProjects = [
-  {
-    id: 1,
-    title: "Adelaide Hills Development",
-    location: "Crafers, SA",
-    status: "Active Investment",
-    category: "house-land",
-    image: "https://images.pexels.com/photos/7031607/pexels-photo-7031607.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
-    investmentAmount: "$150,000 - $300,000",
-    expectedReturn: "18-22%",
-    timeline: "12-18 months",
-    description: "Premium house and land development in sought-after Adelaide Hills location",
-    beds: 4,
-    baths: 2,
-    parking: 2,
-    landSize: "650m²"
-  },
-  {
-    id: 2,
-    title: "Morphett Vale Estate",
-    location: "Morphett Vale, SA",
-    status: "Launching Soon",
-    category: "house-land",
-    image: "https://images.pexels.com/photos/5997993/pexels-photo-5997993.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
-    investmentAmount: "$120,000 - $250,000",
-    expectedReturn: "16-20%",
-    timeline: "10-14 months",
-    description: "Family-focused development with modern amenities and excellent schools nearby",
-    beds: 3,
-    baths: 2,
-    parking: 2,
-    landSize: "500m²"
-  },
-  {
-    id: 3,
-    title: "Glenelg House Project",
-    location: "Glenelg, SA",
-    status: "Fully Subscribed",
-    category: "house-land",
-    image: "https://images.pexels.com/photos/7031407/pexels-photo-7031407.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
-    investmentAmount: "$200,000 - $400,000",
-    expectedReturn: "20-25%",
-    timeline: "15-20 months",
-    description: "Luxury houses near the beach with high rental demand",
-    beds: 4,
-    baths: 3,
-    parking: 2,
-    landSize: "400m²"
-  },
-  {
-    id: 4,
-    title: "Mount Barker Family Homes",
-    location: "Mount Barker, SA",
-    status: "Planning Phase",
-    category: "house-land",
-    image: "https://images.pexels.com/photos/323705/pexels-photo-323705.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
-    investmentAmount: "$180,000 - $350,000",
-    expectedReturn: "17-21%",
-    timeline: "14-18 months",
-    description: "Modern family homes in growing suburban location with excellent amenities",
-    beds: 4,
-    baths: 2,
-    parking: 2,
-    landSize: "600m²"
-  },
-  {
-    id: 5,
-    title: "Noarlunga Downs Development",
-    location: "Noarlunga Downs, SA",
-    status: "Active Investment",
-    category: "house-land",
-    image: "https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
-    investmentAmount: "$140,000 - $280,000",
-    expectedReturn: "18-23%",
-    timeline: "12-16 months",
-    description: "Affordable family homes in established community with great transport links",
-    beds: 3,
-    baths: 2,
-    parking: 2,
-    landSize: "550m²"
-  },
-  {
-    id: 6,
-    title: "Aldinga Beach Houses",
-    location: "Aldinga Beach, SA",
-    status: "Launching Soon",
-    category: "house-land",
-    image: "https://images.pexels.com/photos/2121121/pexels-photo-2121121.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
-    investmentAmount: "$220,000 - $450,000",
-    expectedReturn: "19-24%",
-    timeline: "16-22 months",
-    description: "Coastal living houses with premium finishes and ocean proximity",
-    beds: 4,
-    baths: 2,
-    parking: 2,
-    landSize: "700m²"
-  }
-]
+// Dynamic project data - loaded from JSON file
+const investmentProjects: Project[] = (projectsData as Project[]) || []
 
 const services = [
   {
@@ -218,13 +124,15 @@ const processSteps = [
   },
   {
     step: "05",
-    title: "Settlement & Returns",
-    description: "Smooth settlement process and distribution of returns to investors upon project completion."
+    title: "Final Delivery",
+    description: "Complete project handover with full documentation and ongoing support for investors."
   }
 ]
 
 export default function WemarkHomepage() {
   const [currentSlide, setCurrentSlide] = useState(0)
+  const [isContactDialogOpen, setIsContactDialogOpen] = useState(false)
+  const [contactDialogTitle, setContactDialogTitle] = useState('Book a Call')
   const [currentTestimonial, setCurrentTestimonial] = useState(0)
   const [selectedCategory, setSelectedCategory] = useState('all')
 
@@ -248,10 +156,19 @@ export default function WemarkHomepage() {
     document.getElementById('contact-banner')?.scrollIntoView({ behavior: 'smooth' })
   }
 
+  const openContactDialog = (title: string) => {
+    setContactDialogTitle(title)
+    setIsContactDialogOpen(true)
+  }
+
   return (
     <div className="min-h-screen" style={{ backgroundColor: 'var(--bg-primary)' }}>
       {/* Header */}
-      <Header onContactClick={scrollToContact} onProjectsClick={scrollToProjects} />
+      <Header 
+        onContactClick={scrollToContact} 
+        onProjectsClick={scrollToProjects}
+        onBookCallClick={() => openContactDialog('Book a Call')}
+      />
 
       {/* Hero Section */}
       <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -281,23 +198,23 @@ export default function WemarkHomepage() {
               <span style={{ color: 'var(--bg-primary)' }}>Invest</span> and enjoy the <span style={{ color: 'var(--bg-primary)' }}>returns</span>
             </h1>
             
-            <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto" style={{ color: 'var(--text-white-90)' }}>
+            <p className="text-lg md:text-xl font-normal mb-8 max-w-2xl mx-auto" style={{ color: 'var(--text-white-90)' }}>
               We source premium land, build quality homes, and sell them to deliver exceptional returns. Your trusted partner in South Australian property investment.
             </p>
             
             {/* Stats Row */}
             <div className="grid grid-cols-3 gap-6 mb-8 max-w-2xl mx-auto">
               <div>
-                <div className="text-2xl md:text-3xl font-bold" style={{ color: 'var(--bg-primary)' }}>$25M+</div>
-                <div className="text-sm" style={{ color: 'var(--text-white-80)' }}>Projects Completed</div>
+                <div className="text-2xl md:text-3xl font-bold" style={{ color: 'var(--bg-primary)' }}>$50M+</div>
+                <div className="text-sm font-normal" style={{ color: 'var(--text-white-80)' }}>Projects Completed</div>
               </div>
               <div>
                 <div className="text-2xl md:text-3xl font-bold" style={{ color: 'var(--bg-primary)' }}>22%</div>
-                <div className="text-sm" style={{ color: 'var(--text-white-80)' }}>Average Returns</div>
+                <div className="text-sm font-normal" style={{ color: 'var(--text-white-80)' }}>Average Returns</div>
               </div>
               <div>
                 <div className="text-2xl md:text-3xl font-bold" style={{ color: 'var(--bg-primary)' }}>150+</div>
-                <div className="text-sm" style={{ color: 'var(--text-white-80)' }}>Happy Investors</div>
+                <div className="text-sm font-normal" style={{ color: 'var(--text-white-80)' }}>Happy Investors</div>
               </div>
             </div>
             
@@ -308,19 +225,15 @@ export default function WemarkHomepage() {
                 className="px-8 py-4 text-lg rounded-lg font-medium transition-all hover:scale-105 shadow-lg"
                 style={{ backgroundColor: 'var(--btn-secondary-bg)', color: 'var(--btn-secondary-text)' }}
               >
-                View Investment Opportunities
+                View Projects
               </Button>
               <Button 
-                onClick={scrollToContact}
-                variant="outline" 
-                className="px-8 py-4 text-lg rounded-lg font-medium transition-all hover:scale-105 border-2 backdrop-blur-sm"
-                style={{ 
-                  borderColor: 'var(--bg-primary)', 
-                  color: 'var(--bg-primary)',
-                  backgroundColor: 'var(--bg-white-10)'
-                }}
+                onClick={() => openContactDialog('Schedule Free Consultation')}
+                variant="outline"
+                className="px-8 py-4 text-lg rounded-lg font-medium transition-all hover:scale-105 border-2"
+                style={{ borderColor: 'var(--btn-outline-border)', color: 'var(--btn-outline-text)' }}
               >
-                Schedule Consultation
+                Schedule Free Consultation
               </Button>
             </div>
           </div>
@@ -990,7 +903,7 @@ export default function WemarkHomepage() {
               <h2 className="text-4xl md:text-5xl font-bold mb-6" style={{ color: 'var(--color-accent)' }}>
                 Discover what makes us different
               </h2>
-              <p className="text-lg mb-8 leading-relaxed" style={{ color: 'var(--color-accent)', opacity: 0.9 }}>
+              <p className="text-lg font-normal mb-8 leading-relaxed" style={{ color: 'var(--color-accent)', opacity: 0.9 }}>
                 WEMARK sources premium land, builds quality homes, and sells them to deliver exceptional returns. Our streamlined approach combines strategic land acquisition, professional construction management, and transparent investor relations.
               </p>
               
@@ -1004,7 +917,7 @@ export default function WemarkHomepage() {
                     <h3 className="text-xl font-bold mb-2" style={{ color: 'var(--color-accent)' }}>
                       Proven Track Record
                     </h3>
-                    <p className="opacity-80" style={{ color: 'var(--color-accent)' }}>
+                    <p className="font-normal opacity-80" style={{ color: 'var(--color-accent)' }}>
                       Over $25M in successful projects with consistent 15-25% returns for our investment partners.
                     </p>
                   </div>
@@ -1019,7 +932,7 @@ export default function WemarkHomepage() {
                     <h3 className="text-xl font-bold mb-2" style={{ color: 'var(--color-accent)' }}>
                       Risk Management
                     </h3>
-                    <p className="opacity-80" style={{ color: 'var(--color-accent)' }}>
+                    <p className="font-normal opacity-80" style={{ color: 'var(--color-accent)' }}>
                       Comprehensive due diligence and risk assessment on every project to protect your investment.
                     </p>
                   </div>
@@ -1034,7 +947,7 @@ export default function WemarkHomepage() {
                     <h3 className="text-xl font-bold mb-2" style={{ color: 'var(--color-accent)' }}>
                       Expert Team
                     </h3>
-                    <p className="opacity-80" style={{ color: 'var(--color-accent)' }}>
+                    <p className="font-normal opacity-80" style={{ color: 'var(--color-accent)' }}>
                       Experienced professionals in property development, construction, and investment management.
                     </p>
                   </div>
@@ -1064,7 +977,7 @@ export default function WemarkHomepage() {
                 <Card className="p-4 backdrop-blur-sm border-0" style={{ backgroundColor: 'rgba(234, 223, 207, 0.95)' }}>
                   <div className="grid grid-cols-3 gap-4 text-center">
                     <div>
-                      <div className="text-2xl font-bold" style={{ color: 'var(--color-secondary)' }}>$25M+</div>
+                      <div className="text-2xl font-bold" style={{ color: 'var(--color-secondary)' }}>$50M+</div>
                       <div className="text-xs opacity-70" style={{ color: 'var(--text-primary)' }}>Projects</div>
                     </div>
                     <div>
@@ -1089,12 +1002,12 @@ export default function WemarkHomepage() {
             <h2 className="text-4xl md:text-5xl font-bold mb-6" style={{ color: '#1A2D3B' }}>
               Meet Our Team
             </h2>
-            <p className="text-lg" style={{ color: '#4a5568' }}>
+            <p className="text-lg font-normal" style={{ color: '#4a5568' }}>
               The experts behind your investment success
             </p>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
             {/* Chirag Chavda */}
             <div className="text-center">
               <div className="relative mb-6">
@@ -1109,9 +1022,9 @@ export default function WemarkHomepage() {
                 Chirag Chavda
               </h3>
               <p className="text-lg font-medium mb-4" style={{ color: '#D4A574' }}>
-                Director/Project Manager
+                Director
               </p>
-              <p className="text-sm leading-relaxed" style={{ color: '#4a5568' }}>
+              <p className="text-sm font-normal leading-relaxed" style={{ color: '#4a5568' }}>
                 Leading strategic project development and ensuring exceptional delivery standards across all WEMARK developments.
               </p>
             </div>
@@ -1130,9 +1043,9 @@ export default function WemarkHomepage() {
                 Parm Singh
               </h3>
               <p className="text-lg font-medium mb-4" style={{ color: '#D4A574' }}>
-                Principal
+                Director
               </p>
-              <p className="text-sm leading-relaxed" style={{ color: '#4a5568' }}>
+              <p className="text-sm font-normal leading-relaxed" style={{ color: '#4a5568' }}>
                 Driving company vision and strategic growth while maintaining our commitment to investor success and quality development.
               </p>
             </div>
@@ -1151,10 +1064,31 @@ export default function WemarkHomepage() {
                 Ravin
               </h3>
               <p className="text-lg font-medium mb-4" style={{ color: '#D4A574' }}>
-                Sales Agent
+                Project Manager
               </p>
-              <p className="text-sm leading-relaxed" style={{ color: '#4a5568' }}>
-                Connecting investors with premium opportunities and providing expert guidance throughout the investment journey.
+              <p className="text-sm font-normal leading-relaxed" style={{ color: '#4a5568' }}>
+                Managing project timelines and ensuring quality delivery while coordinating with all stakeholders for successful outcomes.
+              </p>
+            </div>
+            
+            {/* Mohammed Isa */}
+            <div className="text-center">
+              <div className="relative mb-6">
+                <img 
+                  src="/Mohammed Isa.webp"
+                  alt="Mohammed Isa"
+                  className="w-48 h-48 rounded-full mx-auto object-cover shadow-xl"
+                />
+                <div className="absolute inset-0 rounded-full bg-gradient-to-t from-[#1A2D3B]/20 to-transparent"></div>
+              </div>
+              <h3 className="text-2xl font-bold mb-2" style={{ color: '#1A2D3B' }}>
+                Mohammed Isa
+              </h3>
+              <p className="text-lg font-medium mb-4" style={{ color: '#D4A574' }}>
+                Advertising Agent
+              </p>
+              <p className="text-sm font-normal leading-relaxed" style={{ color: '#4a5568' }}>
+                Developing innovative marketing strategies and managing advertising campaigns to maximize project visibility and investor engagement.
               </p>
             </div>
           </div>
@@ -1164,6 +1098,14 @@ export default function WemarkHomepage() {
 
       {/* Footer */}
       <Footer />
+
+      {/* Contact Dialog */}
+      <ContactDialog 
+        isOpen={isContactDialogOpen}
+        onClose={() => setIsContactDialogOpen(false)}
+        title={contactDialogTitle}
+        subtitle={contactDialogTitle === 'Book a Call' ? 'Get in touch with our team for a free consultation' : 'Schedule your free property investment consultation'}
+      />
     </div>
   )
 }

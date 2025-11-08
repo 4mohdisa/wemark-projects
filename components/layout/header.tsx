@@ -7,9 +7,10 @@ import { Menu, X } from 'lucide-react'
 interface HeaderProps {
   onContactClick?: () => void;
   onProjectsClick?: () => void;
+  onBookCallClick?: () => void;
 }
 
-export default function Header({ onContactClick, onProjectsClick }: HeaderProps) {
+export default function Header({ onContactClick, onProjectsClick, onBookCallClick }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isHeaderSticky, setIsHeaderSticky] = useState(false)
 
@@ -57,15 +58,15 @@ export default function Header({ onContactClick, onProjectsClick }: HeaderProps)
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <a href="/#about" className="font-medium transition-colors hover:opacity-80" style={{ color: 'var(--text-primary)' }}>About</a>
-            <a href="/projects" className="font-medium transition-colors hover:opacity-80" style={{ color: 'var(--text-primary)' }}>Projects</a>
-            <a href="/#contact-banner" className="font-medium transition-colors hover:opacity-80" style={{ color: 'var(--text-primary)' }}>Contact</a>
+            <a href="/#about" className="font-normal transition-colors hover:opacity-80" style={{ color: 'var(--text-primary)' }}>About</a>
+            <a href="/projects" className="font-normal transition-colors hover:opacity-80" style={{ color: 'var(--text-primary)' }}>Projects</a>
+            <a href="/#contact-banner" className="font-normal transition-colors hover:opacity-80" style={{ color: 'var(--text-primary)' }}>Contact</a>
           </nav>
 
           {/* CTA Button */}
           <div className="hidden md:block">
             <Button 
-              onClick={scrollToContact}
+              onClick={onBookCallClick || scrollToContact}
               className="px-6 py-2 rounded-md font-medium transition-all hover:scale-105 shadow-lg"
               style={{ 
                 backgroundColor: 'var(--btn-primary-bg)', 
@@ -91,11 +92,11 @@ export default function Header({ onContactClick, onProjectsClick }: HeaderProps)
         {isMenuOpen && (
           <div className="md:hidden mt-4 pb-4 border-t" style={{ borderColor: 'var(--border-secondary)' }}>
             <nav className="flex flex-col space-y-4 pt-4">
-              <a href="/#about" className="font-medium" style={{ color: 'var(--text-primary)' }}>About</a>
-              <a href="/projects" className="font-medium" style={{ color: 'var(--text-primary)' }}>Projects</a>
-              <a href="/#contact-banner" className="font-medium" style={{ color: 'var(--text-primary)' }}>Contact</a>
+              <a href="/#about" className="font-normal" style={{ color: 'var(--text-primary)' }}>About</a>
+              <a href="/projects" className="font-normal" style={{ color: 'var(--text-primary)' }}>Projects</a>
+              <a href="/#contact-banner" className="font-normal" style={{ color: 'var(--text-primary)' }}>Contact</a>
               <Button 
-                onClick={scrollToContact}
+                onClick={onBookCallClick || scrollToContact}
                 className="px-6 py-2 rounded-md w-fit transition-all hover:scale-105"
                 style={{ 
                   backgroundColor: 'var(--btn-primary-bg)', 

@@ -10,141 +10,11 @@ import { Badge } from '@/components/ui/badge'
 import { MapPin, Bed, Bath, Car, Calendar, DollarSign, TrendingUp, Home, Users, Shield, CheckCircle, Phone, Mail, Wifi, Zap, Droplets, Wind, TreePine, ShieldCheck, ChevronLeft, ChevronRight } from 'lucide-react'
 import Header from '@/components/layout/header'
 import Footer from '@/components/layout/footer'
+import projectsData from '@/data/projects.json'
+import { Project } from '@/types/project'
 
-// Investment project data - only house projects
-const investmentProjects = [
-  {
-    id: 1,
-    title: "Architectural Luxury Meets Lifestyle – The Last Opportunity",
-    location: "64 Hart Street Campbelltown SA 5074",
-    status: "Active Investment",
-    category: "house-land",
-    image: "https://images.pexels.com/photos/7031607/pexels-photo-7031607.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
-    gallery: [
-      "https://images.pexels.com/photos/7031607/pexels-photo-7031607.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
-      "https://images.pexels.com/photos/5997993/pexels-photo-5997993.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
-      "https://images.pexels.com/photos/7031407/pexels-photo-7031407.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
-      "https://images.pexels.com/photos/323705/pexels-photo-323705.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
-      "https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
-      "https://images.pexels.com/photos/2121121/pexels-photo-2121121.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
-    ],
-    floorPlan: "https://images.pexels.com/photos/8134750/pexels-photo-8134750.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
-    investmentAmount: "$1299K-$1349K",
-    expectedReturn: "18-22%",
-    timeline: "12-18 months",
-    description: "To secure your offer, simply click the link below and register to get the rewards. Quality and luxury are the hallmarks of this home and register for the rewards.",
-    longDescription: "Once registered, you'll be able to monitor other offers in real time. Quality and luxury are the hallmarks of this home and register for the rewards. With premium finishes and a spacious open plan design, this property offers exceptional value in a prime location. The home features high-end appliances, stone benchtops, and premium flooring throughout. Located in a sought-after neighborhood with excellent schools and amenities nearby.",
-    beds: 4,
-    baths: 2,
-    parking: 2,
-    landSize: "650m²",
-    houseSize: "285m²",
-    yearBuilt: "2024-2025",
-    propertyFeatures: [
-      { name: "Air Conditioning", icon: "Wind", description: "Ducted reverse cycle air conditioning throughout" },
-      { name: "Bedrooms", icon: "Bed", description: "4 spacious bedrooms with built-in robes" },
-      { name: "Bathrooms", icon: "Bath", description: "2 full bathrooms plus powder room" },
-      { name: "Dishwasher", icon: "Home", description: "Premium integrated dishwasher" },
-      { name: "Built-in Robes", icon: "Home", description: "Built-in wardrobes in all bedrooms" },
-      { name: "Garage", icon: "Car", description: "Double garage with internal access" },
-      { name: "Study", icon: "Home", description: "Dedicated study/home office space" }
-    ],
-    locationFeatures: [
-      "Premium location in Campbelltown",
-      "Close to excellent schools",
-      "15 minutes to Adelaide CBD",
-      "Near shopping centers and amenities",
-      "Public transport access",
-      "Family-friendly neighborhood"
-    ],
-    investmentHighlights: [
-      "High-quality construction materials",
-      "Energy-efficient design with 7-star rating",
-      "Strong rental demand area ($650-750/week)",
-      "Capital growth potential 8-12% annually",
-      "Premium location with limited supply",
-      "Professional property management available"
-    ],
-    features: [
-      "Premium location in Campbelltown",
-      "High-quality construction materials",
-      "Energy-efficient design",
-      "Landscaped gardens included",
-      "Close to schools and amenities",
-      "Strong rental demand area"
-    ],
-    investmentDetails: {
-      minimumInvestment: "$150,000",
-      maximumInvestment: "$300,000",
-      expectedReturn: "18-22%",
-      projectDuration: "12-18 months",
-      totalProjectValue: "$2.5M",
-      unitsAvailable: 8,
-      soldUnits: 3
-    }
-  },
-  {
-    id: 2,
-    title: "Morphett Vale Estate",
-    location: "Morphett Vale, SA",
-    status: "Launching Soon",
-    category: "house-land",
-    image: "https://images.pexels.com/photos/5997993/pexels-photo-5997993.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
-    gallery: [
-      "https://images.pexels.com/photos/5997993/pexels-photo-5997993.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
-      "https://images.pexels.com/photos/7031607/pexels-photo-7031607.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
-      "https://images.pexels.com/photos/323705/pexels-photo-323705.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
-    ],
-    investmentAmount: "$120,000 - $250,000",
-    expectedReturn: "16-20%",
-    timeline: "10-14 months",
-    description: "Family-focused development with modern amenities and excellent schools nearby.",
-    longDescription: "Morphett Vale Estate represents the perfect opportunity for investors seeking stable returns in a family-oriented community. This development focuses on creating quality homes for growing families, with easy access to schools, parks, and shopping centers. The area has shown consistent growth and strong rental demand from families seeking affordable quality housing. Each home features contemporary design with practical layouts, quality fixtures, and low-maintenance gardens perfect for busy families.",
-    beds: 3,
-    baths: 2,
-    parking: 2,
-    landSize: "500m²",
-    houseSize: "220m²",
-    yearBuilt: "2024-2025",
-    propertyFeatures: [
-      { name: "Main Bathroom", icon: "Bath", description: "Full family bathroom with separate toilet" },
-      { name: "Built-in Robes", icon: "Home", description: "Built-in wardrobes in all bedrooms" },
-      { name: "Modern Kitchen", icon: "Home", description: "Contemporary kitchen with island bench" },
-      { name: "Laminate Benchtops", icon: "Home", description: "Durable laminate benchtops with modern finishes" },
-      { name: "Split System AC", icon: "Wind", description: "Split system air conditioning in main living areas" },
-      { name: "Solar Ready", icon: "Zap", description: "Solar panel ready with electrical provisions" },
-      { name: "Garden Shed", icon: "Home", description: "Included garden shed for storage" },
-      { name: "Alarm System", icon: "ShieldCheck", description: "Basic security alarm system included" },
-      { name: "NBN Ready", icon: "Wifi", description: "NBN ready with internal cabling" },
-      { name: "Low Maintenance", icon: "TreePine", description: "Drought-resistant landscaping and easy-care gardens" }
-    ],
-    locationFeatures: [
-      "Family-friendly neighborhood",
-      "5 minutes to Colonnades Shopping Centre",
-      "25 minutes to Adelaide CBD",
-      "Close to Morphett Vale Primary School",
-      "Near Reynella East College",
-      "Regular public transport to city"
-    ],
-    investmentHighlights: [
-      "Modern open-plan designs",
-      "Energy-efficient construction",
-      "Strong rental demand ($450-550/week)",
-      "Growing community amenities",
-      "Affordable entry point for investors",
-      "Established transport links"
-    ],
-    investmentDetails: {
-      minimumInvestment: "$120,000",
-      maximumInvestment: "$250,000",
-      expectedReturn: "16-20%",
-      projectDuration: "10-14 months",
-      totalProjectValue: "$1.8M",
-      unitsAvailable: 12,
-      soldUnits: 0
-    }
-  }
-]
+// Dynamic project data - loaded from JSON file
+const investmentProjects: Project[] = (projectsData as Project[]) || []
 
 interface ProjectDetailsPageContentProps {
   projectId: string;
@@ -154,16 +24,18 @@ export default function ProjectDetailsPageContent({ projectId }: ProjectDetailsP
   const [selectedImage, setSelectedImage] = useState(0)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isInspectionDialogOpen, setIsInspectionDialogOpen] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
   const [inspectionForm, setInspectionForm] = useState({
     fullName: '',
     email: '',
-    phone: '',
-    projectId: projectId
+    phoneNumber: ''
   })
-  
+
   const project = investmentProjects.find(p => p.id === parseInt(projectId))
 
   if (!project) {
+    // ... (rest of the code remains the same)
     return (
       <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: 'var(--color-accent)' }}>
         <div className="text-center">
@@ -178,11 +50,56 @@ export default function ProjectDetailsPageContent({ projectId }: ProjectDetailsP
   }
 
   const nextImage = () => {
-    setSelectedImage((prev) => (prev + 1) % project.gallery.length)
+    const galleryLength = project.gallery?.length ?? 0
+    if (galleryLength > 0) {
+      setSelectedImage((prev) => (prev + 1) % galleryLength)
+    }
   }
 
   const prevImage = () => {
-    setSelectedImage((prev) => (prev - 1 + project.gallery.length) % project.gallery.length)
+    const galleryLength = project.gallery?.length ?? 0
+    if (galleryLength > 0) {
+      setSelectedImage((prev) => (prev - 1 + galleryLength) % galleryLength)
+    }
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    setSubmitStatus('idle')
+
+    try {
+      const response = await fetch('/api/get-in-touch', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...inspectionForm,
+          projectName: project.title
+        }),
+      })
+
+      if (response.ok) {
+        setSubmitStatus('success')
+        setInspectionForm({
+          fullName: '',
+          email: '',
+          phoneNumber: ''
+        })
+        setTimeout(() => {
+          setIsInspectionDialogOpen(false)
+          setSubmitStatus('idle')
+        }, 2000)
+      } else {
+        setSubmitStatus('error')
+      }
+    } catch (error) {
+      console.error('Form submission error:', error)
+      setSubmitStatus('error')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -199,7 +116,7 @@ export default function ProjectDetailsPageContent({ projectId }: ProjectDetailsP
               {/* Main Image */}
               <div className="relative overflow-hidden rounded-2xl mb-2">
                 <img 
-                  src={project.gallery[selectedImage]} 
+                  src={project.gallery?.[selectedImage] || project.image} 
                   alt={project.title}
                   className="w-full h-96 md:h-[500px] object-cover cursor-pointer"
                   onClick={() => setIsModalOpen(true)}
@@ -227,6 +144,7 @@ export default function ProjectDetailsPageContent({ projectId }: ProjectDetailsP
               </div>
 
               {/* Thumbnail Gallery */}
+              {project.gallery && project.gallery.length > 1 && (
               <div className="grid grid-cols-6 gap-2">
                 {project.gallery.map((image, index) => (
                   <button
@@ -247,6 +165,7 @@ export default function ProjectDetailsPageContent({ projectId }: ProjectDetailsP
                   </button>
                 ))}
               </div>
+              )}
             </div>
           </div>
 
@@ -267,46 +186,44 @@ export default function ProjectDetailsPageContent({ projectId }: ProjectDetailsP
               
               <div className="mb-6">
                 <h2 className="text-2xl font-bold mb-4" style={{ color: 'var(--color-primary)' }}>Description</h2>
-                <p className="text-lg mb-4 leading-relaxed" style={{ color: 'var(--color-primary)', opacity: 0.8 }}>
+                <p className="text-lg font-normal mb-4 leading-relaxed" style={{ color: 'var(--color-primary)', opacity: 0.8 }}>
                   {project.description}
                 </p>
-                <p className="text-base leading-relaxed" style={{ color: 'var(--color-primary)', opacity: 0.8 }}>
+                <p className="text-base font-normal leading-relaxed" style={{ color: 'var(--color-primary)', opacity: 0.8 }}>
                   {project.longDescription}
                 </p>
               </div>
 
               {/* Property Details Grid */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+              <div className="grid grid-cols-3 gap-4 mb-8">
                 <div className="text-center p-4 rounded-lg" style={{ backgroundColor: 'white' }}>
-                  <div className="text-2xl font-bold mb-1" style={{ color: 'var(--color-primary)' }}>3</div>
-                  <div className="text-sm" style={{ color: 'var(--color-primary)', opacity: 0.7 }}>Bedrooms</div>
+                  <div className="text-2xl font-bold mb-1" style={{ color: 'var(--color-primary)' }}>{project.beds}</div>
+                  <div className="text-sm font-normal" style={{ color: 'var(--color-primary)', opacity: 0.7 }}>Bedrooms</div>
                 </div>
                 <div className="text-center p-4 rounded-lg" style={{ backgroundColor: 'white' }}>
-                  <div className="text-2xl font-bold mb-1" style={{ color: 'var(--color-primary)' }}>2</div>
-                  <div className="text-sm" style={{ color: 'var(--color-primary)', opacity: 0.7 }}>Bathrooms</div>
+                  <div className="text-2xl font-bold mb-1" style={{ color: 'var(--color-primary)' }}>{project.baths}</div>
+                  <div className="text-sm font-normal" style={{ color: 'var(--color-primary)', opacity: 0.7 }}>Bathrooms</div>
                 </div>
                 <div className="text-center p-4 rounded-lg" style={{ backgroundColor: 'white' }}>
-                  <div className="text-2xl font-bold mb-1" style={{ color: 'var(--color-primary)' }}>2</div>
-                  <div className="text-sm" style={{ color: 'var(--color-primary)', opacity: 0.7 }}>Garage</div>
-                </div>
-                <div className="text-center p-4 rounded-lg" style={{ backgroundColor: 'white' }}>
-                  <div className="text-2xl font-bold mb-1" style={{ color: 'var(--color-primary)' }}>0</div>
-                  <div className="text-sm" style={{ color: 'var(--color-primary)', opacity: 0.7 }}>Remote Garage</div>
+                  <div className="text-2xl font-bold mb-1" style={{ color: 'var(--color-primary)' }}>{project.parking}</div>
+                  <div className="text-sm font-normal" style={{ color: 'var(--color-primary)', opacity: 0.7 }}>Garage</div>
                 </div>
               </div>
 
               {/* Features Section */}
+              {project.propertyFeatures && project.propertyFeatures.length > 0 && (
               <div className="mb-8">
                 <h3 className="text-xl font-bold mb-4" style={{ color: 'var(--color-primary)' }}>Features</h3>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                   {project.propertyFeatures.map((feature, index) => (
                     <div key={index} className="flex items-center p-3 rounded-lg" style={{ backgroundColor: 'white' }}>
                       <CheckCircle size={16} className="mr-2 flex-shrink-0" style={{ color: 'var(--color-secondary)' }} />
-                      <span className="text-sm" style={{ color: 'var(--color-primary)' }}>{feature.name}</span>
+                      <span className="text-sm font-normal" style={{ color: 'var(--color-primary)' }}>{feature.name}</span>
                     </div>
                   ))}
                 </div>
               </div>
+              )}
             </div>
 
             {/* Right Column - Contact Info */}
@@ -314,7 +231,7 @@ export default function ProjectDetailsPageContent({ projectId }: ProjectDetailsP
               <Card className="p-6 sticky top-4" style={{ backgroundColor: 'white' }}>
                 {/* Investment Amount */}
                 <div className="text-center mb-6 p-4 rounded-lg" style={{ backgroundColor: 'var(--color-light-beige)' }}>
-                  <div className="text-sm font-medium mb-1" style={{ color: 'var(--color-primary)', opacity: 0.7 }}>Investment Amount</div>
+                  <div className="text-sm font-normal mb-1" style={{ color: 'var(--color-primary)', opacity: 0.7 }}>Investment Amount</div>
                   <div className="text-2xl md:text-3xl font-bold" style={{ color: 'var(--color-secondary)' }}>
                     {project.investmentAmount}
                   </div>
@@ -328,17 +245,16 @@ export default function ProjectDetailsPageContent({ projectId }: ProjectDetailsP
                     <div className="flex items-start mb-3">
                       <div className="w-16 h-16 rounded-full overflow-hidden mr-4 flex-shrink-0">
                         <img 
-                          src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop"
-                          alt="Peter Singh"
+                          src="/Parm Singh.webp"
+                          alt="Parm Singh"
                           className="w-full h-full object-cover"
                         />
                       </div>
                       <div className="flex-1">
-                        <div className="font-bold text-lg" style={{ color: 'var(--color-primary)' }}>Peter Singh</div>
-                        <div className="text-sm mb-1" style={{ color: 'var(--color-secondary)' }}>Senior Sales Agent</div>
-                        <div className="text-sm" style={{ color: 'var(--color-primary)', opacity: 0.7 }}>
-                          <div>0418 820 1234</div>
-                          <div>peter@wemark.com.au</div>
+                        <div className="font-bold text-lg" style={{ color: 'var(--color-primary)' }}>Parm Singh</div>
+                        <div className="text-sm mb-1" style={{ color: 'var(--color-secondary)' }}>Director</div>
+                        <div className="text-sm font-normal" style={{ color: 'var(--color-primary)', opacity: 0.7 }}>
+                          0426 786 664
                         </div>
                       </div>
                     </div>
@@ -349,17 +265,16 @@ export default function ProjectDetailsPageContent({ projectId }: ProjectDetailsP
                     <div className="flex items-start mb-3">
                       <div className="w-16 h-16 rounded-full overflow-hidden mr-4 flex-shrink-0">
                         <img 
-                          src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop"
-                          alt="Cheng Chandra"
+                          src="/Chirag Chavda.webp"
+                          alt="Chirag Chavda"
                           className="w-full h-full object-cover"
                         />
                       </div>
                       <div className="flex-1">
-                        <div className="font-bold text-lg" style={{ color: 'var(--color-primary)' }}>Cheng Chandra</div>
-                        <div className="text-sm mb-1" style={{ color: 'var(--color-secondary)' }}>Sales Associate</div>
-                        <div className="text-sm" style={{ color: 'var(--color-primary)', opacity: 0.7 }}>
-                          <div>0418 820 5678</div>
-                          <div>cheng@wemark.com.au</div>
+                        <div className="font-bold text-lg" style={{ color: 'var(--color-primary)' }}>Chirag Chavda</div>
+                        <div className="text-sm mb-1" style={{ color: 'var(--color-secondary)' }}>Director</div>
+                        <div className="text-sm font-normal" style={{ color: 'var(--color-primary)', opacity: 0.7 }}>
+                          0405 667 235
                         </div>
                       </div>
                     </div>
@@ -368,19 +283,11 @@ export default function ProjectDetailsPageContent({ projectId }: ProjectDetailsP
 
                 <div className="space-y-3">
                   <Button 
+                    onClick={() => setIsInspectionDialogOpen(true)}
                     className="w-full py-3 text-lg font-medium hover:opacity-90 transition-opacity"
                     style={{ backgroundColor: 'var(--color-secondary)', color: 'white' }}
                   >
-                    <Phone size={20} className="mr-2" />
-                    Call Agent
-                  </Button>
-                  <Button 
-                    onClick={() => setIsInspectionDialogOpen(true)}
-                    variant="outline"
-                    className="w-full py-3 text-lg font-medium hover:bg-opacity-10 transition-all"
-                    style={{ borderColor: 'var(--color-secondary)', color: 'var(--color-secondary)' }}
-                  >
-                    Book Inspection
+                    Get in Touch
                   </Button>
                 </div>
               </Card>
@@ -395,9 +302,9 @@ export default function ProjectDetailsPageContent({ projectId }: ProjectDetailsP
           <h2 className="text-3xl font-bold mb-8" style={{ color: 'var(--color-primary)' }}>Floor plans</h2>
           <div className="bg-white rounded-2xl shadow-lg p-8">
             <img 
-              src={project.floorPlan} 
+              src={project.floorPlan || "https://i2.au.reastatic.net/3712x1648-resize,r=33,g=40,b=46/7e80cc5458a77ff7ab62b889a4955469c669988e36c011684e0750d3adeda1e8/image.jpg"} 
               alt="Floor Plan"
-              className="w-full max-w-2xl mx-auto rounded-lg"
+              className="w-full max-w-4xl mx-auto rounded-lg"
             />
           </div>
         </div>
@@ -413,8 +320,17 @@ export default function ProjectDetailsPageContent({ projectId }: ProjectDetailsP
                 {project.location}
               </p>
             </div>
-            <div className="bg-gray-200 rounded-lg h-64 flex items-center justify-center">
-              <p style={{ color: 'var(--color-primary)' }}>Interactive Map Placeholder</p>
+            <div className="rounded-lg h-96 overflow-hidden">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3271.5053303838304!2d138.51428591189963!3d-34.91886147409767!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ab0c4556e1c72f3%3A0x3bb6620472e268c0!2s17%20Milton%20Ave%2C%20Fulham%20Gardens%20SA%205024!5e0!3m2!1sen!2sau!4v1762587612794!5m2!1sen!2sau"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen={true}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title={`Map of ${project.location}`}
+              ></iframe>
             </div>
           </div>
         </div>
@@ -435,7 +351,7 @@ export default function ProjectDetailsPageContent({ projectId }: ProjectDetailsP
           >
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-2xl font-bold" style={{ color: 'var(--color-primary)' }}>
-                Book Inspection
+                Get in Touch
               </h2>
               <button
                 onClick={() => setIsInspectionDialogOpen(false)}
@@ -447,32 +363,36 @@ export default function ProjectDetailsPageContent({ projectId }: ProjectDetailsP
               </button>
             </div>
 
-            <form onSubmit={(e) => {
-              e.preventDefault();
-              // Handle form submission here
-              console.log('Inspection booking:', inspectionForm);
-              setIsInspectionDialogOpen(false);
-              // Reset form
-              setInspectionForm({
-                fullName: '',
-                email: '',
-                phone: '',
-                projectId: projectId
-              });
-            }}>
-              <div className="space-y-4">
-                {/* Project Info */}
-                <div className="p-3 rounded-lg" style={{ backgroundColor: 'var(--color-light-beige)' }}>
-                  <div className="text-sm font-medium" style={{ color: 'var(--color-primary)', opacity: 0.7 }}>
-                    Enquiring about:
-                  </div>
-                  <div className="font-bold" style={{ color: 'var(--color-primary)' }}>
-                    {project.title}
-                  </div>
-                  <div className="text-sm" style={{ color: 'var(--color-primary)', opacity: 0.7 }}>
-                    {project.location}
-                  </div>
-                </div>
+            {submitStatus === 'success' && (
+              <div className="mb-4 p-4 bg-green-50 border border-green-200 rounded-lg">
+                <p className="text-green-800 text-sm">
+                  ✓ Thank you! Your inquiry has been sent successfully. We'll get back to you soon.
+                </p>
+              </div>
+            )}
+
+            {submitStatus === 'error' && (
+              <div className="mb-4 p-4 bg-red-50 border border-red-200 rounded-lg">
+                <p className="text-red-800 text-sm">
+                  ✗ Sorry, there was an error sending your inquiry. Please try again.
+                </p>
+              </div>
+            )}
+
+            <form onSubmit={handleSubmit}>
+        <div className="space-y-4">
+          {/* Project Info */}
+          <div className="p-3 rounded-lg" style={{ backgroundColor: 'var(--color-light-beige)' }}>
+            <div className="text-sm font-medium" style={{ color: 'var(--color-primary)', opacity: 0.7 }}>
+              Enquiring about:
+            </div>
+            <div className="font-bold" style={{ color: 'var(--color-primary)' }}>
+              {project.title}
+            </div>
+            <div className="text-sm" style={{ color: 'var(--color-primary)', opacity: 0.7 }}>
+              {project.location}
+            </div>
+          </div>
 
                 {/* Full Name */}
                 <div>
@@ -514,8 +434,8 @@ export default function ProjectDetailsPageContent({ projectId }: ProjectDetailsP
                   <input
                     type="tel"
                     required
-                    value={inspectionForm.phone}
-                    onChange={(e) => setInspectionForm({...inspectionForm, phone: e.target.value})}
+                    value={inspectionForm.phoneNumber}
+                    onChange={(e) => setInspectionForm({...inspectionForm, phoneNumber: e.target.value})}
                     className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:border-transparent"
                     style={{ '--tw-ring-color': 'var(--color-secondary)' } as React.CSSProperties}
                     placeholder="Enter your phone number"
@@ -535,10 +455,11 @@ export default function ProjectDetailsPageContent({ projectId }: ProjectDetailsP
                 </Button>
                 <Button
                   type="submit"
+                  disabled={isSubmitting}
                   className="flex-1 py-3"
                   style={{ backgroundColor: 'var(--color-secondary)', color: 'white' }}
                 >
-                  Book Inspection
+                  {isSubmitting ? 'Sending...' : 'Get in Touch'}
                 </Button>
               </div>
             </form>
@@ -566,14 +487,14 @@ export default function ProjectDetailsPageContent({ projectId }: ProjectDetailsP
             {/* Modal Image */}
             <div className="relative">
               <img 
-                src={project.gallery[selectedImage]} 
+                src={project.gallery?.[selectedImage] || project.image} 
                 alt={project.title}
                 className="max-w-full max-h-[90vh] object-contain rounded-lg"
                 onClick={(e) => e.stopPropagation()}
               />
               
               {/* Modal Navigation */}
-              {project.gallery.length > 1 && (
+              {project.gallery && project.gallery.length > 1 && (
                 <>
                   <button
                     onClick={(e) => {
@@ -598,9 +519,11 @@ export default function ProjectDetailsPageContent({ projectId }: ProjectDetailsP
             </div>
 
             {/* Image Counter */}
+            {project.gallery && (
             <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/50 text-white px-4 py-2 rounded-full">
               {selectedImage + 1} / {project.gallery.length}
             </div>
+            )}
           </div>
         </div>
       )}

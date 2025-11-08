@@ -10,106 +10,11 @@ import { Badge } from '@/components/ui/badge'
 import { MapPin, Bed, Bath, Car, ArrowRight, Home } from 'lucide-react'
 import Header from '@/components/layout/header'
 import Footer from '@/components/layout/footer'
+import projectsData from '@/data/projects.json'
+import { Project } from '@/types/project'
 
-// Investment project data - only house projects
-const investmentProjects = [
-  {
-    id: 1,
-    title: "Adelaide Hills Development",
-    location: "Crafers, SA",
-    status: "Active Investment",
-    category: "house-land",
-    image: "https://images.pexels.com/photos/7031607/pexels-photo-7031607.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
-    investmentAmount: "$150,000 - $300,000",
-    expectedReturn: "18-22%",
-    timeline: "12-18 months",
-    description: "Premium house and land development in sought-after Adelaide Hills location",
-    beds: 4,
-    baths: 2,
-    parking: 2,
-    landSize: "650m²"
-  },
-  {
-    id: 2,
-    title: "Morphett Vale Estate",
-    location: "Morphett Vale, SA",
-    status: "Launching Soon",
-    category: "house-land",
-    image: "https://images.pexels.com/photos/5997993/pexels-photo-5997993.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
-    investmentAmount: "$120,000 - $250,000",
-    expectedReturn: "16-20%",
-    timeline: "10-14 months",
-    description: "Family-focused development with modern amenities and excellent schools nearby",
-    beds: 3,
-    baths: 2,
-    parking: 2,
-    landSize: "500m²"
-  },
-  {
-    id: 3,
-    title: "Glenelg House Project",
-    location: "Glenelg, SA",
-    status: "Fully Subscribed",
-    category: "house-land",
-    image: "https://images.pexels.com/photos/7031407/pexels-photo-7031407.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
-    investmentAmount: "$200,000 - $400,000",
-    expectedReturn: "20-25%",
-    timeline: "15-20 months",
-    description: "Luxury houses near the beach with high rental demand",
-    beds: 4,
-    baths: 3,
-    parking: 2,
-    landSize: "400m²"
-  },
-  {
-    id: 4,
-    title: "Mount Barker Family Homes",
-    location: "Mount Barker, SA",
-    status: "Planning Phase",
-    category: "house-land",
-    image: "https://images.pexels.com/photos/323705/pexels-photo-323705.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
-    investmentAmount: "$180,000 - $350,000",
-    expectedReturn: "17-21%",
-    timeline: "14-18 months",
-    description: "Modern family homes in growing suburban location with excellent amenities",
-    beds: 4,
-    baths: 2,
-    parking: 2,
-    landSize: "600m²"
-  },
-  {
-    id: 5,
-    title: "Noarlunga Downs Development",
-    location: "Noarlunga Downs, SA",
-    status: "Active Investment",
-    category: "house-land",
-    image: "https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
-    investmentAmount: "$140,000 - $280,000",
-    expectedReturn: "18-23%",
-    timeline: "12-16 months",
-    description: "Affordable family homes in established community with great transport links",
-    beds: 3,
-    baths: 2,
-    parking: 2,
-    landSize: "550m²"
-  },
-  {
-    id: 6,
-    title: "Aldinga Beach Houses",
-    location: "Aldinga Beach, SA",
-    status: "Launching Soon",
-    category: "house-land",
-    image: "https://images.pexels.com/photos/2121121/pexels-photo-2121121.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
-    investmentAmount: "$220,000 - $450,000",
-    expectedReturn: "19-24%",
-    timeline: "16-22 months",
-    description: "Coastal living houses with premium finishes and ocean proximity",
-    beds: 4,
-    baths: 2,
-    parking: 2,
-    landSize: "700m²"
-  }
-]
+// Dynamic project data - loaded from JSON file
+const investmentProjects: Project[] = (projectsData as Project[]) || []
 
 export default function ProjectsPageContent() {
   const [selectedStatus, setSelectedStatus] = useState('all')

@@ -15,7 +15,7 @@ export default function Footer() {
                 alt="WEMARK" 
                 className="h-8 w-auto mb-4"
               />
-              <p className="text-lg mb-4" style={{ color: 'var(--color-accent)', opacity: 0.9 }}>
+              <p className="text-lg font-normal mb-4" style={{ color: 'var(--color-accent)', opacity: 0.9 }}>
                 We're reimagining how you buy, sell and rent. It's now easier to get into a place you love. So let's do this, together.
               </p>
             </div>
@@ -47,22 +47,22 @@ export default function Footer() {
             </h3>
             <ul className="space-y-2">
               <li>
-                <a href="/#about" className="transition-colors hover:opacity-80" style={{ color: 'var(--color-accent)', opacity: 0.8 }}>
+                <a href="/#about" className="font-normal transition-colors hover:opacity-80" style={{ color: 'var(--color-accent)', opacity: 0.8 }}>
                   About Us
                 </a>
               </li>
               <li>
-                <a href="/#contact" className="transition-colors hover:opacity-80" style={{ color: 'var(--color-accent)', opacity: 0.8 }}>
+                <a href="/#contact" className="font-normal transition-colors hover:opacity-80" style={{ color: 'var(--color-accent)', opacity: 0.8 }}>
                   Contact
                 </a>
               </li>
               <li>
-                <a href="/#services" className="transition-colors hover:opacity-80" style={{ color: 'var(--color-accent)', opacity: 0.8 }}>
+                <a href="/#services" className="font-normal transition-colors hover:opacity-80" style={{ color: 'var(--color-accent)', opacity: 0.8 }}>
                   Our Team
                 </a>
               </li>
               <li>
-                <a href="/projects" className="transition-colors hover:opacity-80" style={{ color: 'var(--color-accent)', opacity: 0.8 }}>
+                <a href="/projects" className="font-normal transition-colors hover:opacity-80" style={{ color: 'var(--color-accent)', opacity: 0.8 }}>
                   Investor Assist
                 </a>
               </li>
@@ -84,7 +84,7 @@ export default function Footer() {
                 </div>
                 <span className="font-medium" style={{ color: 'var(--color-accent)' }}>Australia</span>
               </div>
-              <div className="space-y-1 text-sm" style={{ color: 'var(--color-accent)', opacity: 0.8 }}>
+              <div className="space-y-1 text-sm font-normal" style={{ color: 'var(--color-accent)', opacity: 0.8 }}>
                 <div>3/392 Main N Rd, Blair Athol SA 5084, Australia</div>
                 <div>(08) 7200 1444</div>
                 <div>parm@wemark.com.au</div>
@@ -100,7 +100,7 @@ export default function Footer() {
                 </div>
                 <span className="font-medium" style={{ color: 'var(--color-accent)' }}>Dubai</span>
               </div>
-              <div className="space-y-1 text-sm" style={{ color: 'var(--color-accent)', opacity: 0.8 }}>
+              <div className="space-y-1 text-sm font-normal" style={{ color: 'var(--color-accent)', opacity: 0.8 }}>
                 <div>615, Park Lane Tower, Business Bay, Dubai</div>
                 <div>+971 4 553 9685</div>
                 <div>admin@wemark.ae</div>
@@ -116,7 +116,7 @@ export default function Footer() {
                 </div>
                 <span className="font-medium" style={{ color: 'var(--color-accent)' }}>India</span>
               </div>
-              <div className="space-y-1 text-sm" style={{ color: 'var(--color-accent)', opacity: 0.8 }}>
+              <div className="space-y-1 text-sm font-normal" style={{ color: 'var(--color-accent)', opacity: 0.8 }}>
                 <div>SCO 25 Second floor, Sector 82, JLPL Industrial Area, Sahibzada Ajit Singh Nagar, Punjab</div>
                 <div>+91 96896 00010</div>
                 <div>info@touristalrealty.com</div>
@@ -129,29 +129,29 @@ export default function Footer() {
         <div className="border-t pt-8" style={{ borderColor: 'var(--color-secondary)' }}>
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex flex-wrap gap-6 mb-4 md:mb-0">
-              <a href="#" className="text-sm transition-colors hover:opacity-80" style={{ color: 'var(--color-accent)', opacity: 0.7 }}>
+              <a href="#" className="text-sm font-normal transition-colors hover:opacity-80" style={{ color: 'var(--color-accent)', opacity: 0.7 }}>
                 For Sale
               </a>
-              <a href="#" className="text-sm transition-colors hover:opacity-80" style={{ color: 'var(--color-accent)', opacity: 0.7 }}>
+              <a href="#" className="text-sm font-normal transition-colors hover:opacity-80" style={{ color: 'var(--color-accent)', opacity: 0.7 }}>
                 For Rent
               </a>
-              <a href="#" className="text-sm transition-colors hover:opacity-80" style={{ color: 'var(--color-accent)', opacity: 0.7 }}>
+              <a href="#" className="text-sm font-normal transition-colors hover:opacity-80" style={{ color: 'var(--color-accent)', opacity: 0.7 }}>
                 Sold
               </a>
-              <a href="#" className="text-sm transition-colors hover:opacity-80" style={{ color: 'var(--color-accent)', opacity: 0.7 }}>
+              <a href="#" className="text-sm font-normal transition-colors hover:opacity-80" style={{ color: 'var(--color-accent)', opacity: 0.7 }}>
                 Disclaimer
               </a>
-              <a href="#" className="text-sm transition-colors hover:opacity-80" style={{ color: 'var(--color-accent)', opacity: 0.7 }}>
+              <a href="#" className="text-sm font-normal transition-colors hover:opacity-80" style={{ color: 'var(--color-accent)', opacity: 0.7 }}>
                 Terms Of Use
               </a>
-              <a href="#" className="text-sm transition-colors hover:opacity-80" style={{ color: 'var(--color-accent)', opacity: 0.7 }}>
+              <a href="#" className="text-sm font-normal transition-colors hover:opacity-80" style={{ color: 'var(--color-accent)', opacity: 0.7 }}>
                 Privacy Policy
               </a>
-              <a href="#" className="text-sm transition-colors hover:opacity-80" style={{ color: 'var(--color-accent)', opacity: 0.7 }}>
+              <a href="#" className="text-sm font-normal transition-colors hover:opacity-80" style={{ color: 'var(--color-accent)', opacity: 0.7 }}>
                 Copyright
               </a>
             </div>
-            <div className="text-sm" style={{ color: 'var(--color-accent)', opacity: 0.6 }}>
+            <div className="text-sm font-normal" style={{ color: 'var(--color-accent)', opacity: 0.6 }}>
               © 2025 by Wemark. All rights reserved.
             </div>
           </div>
