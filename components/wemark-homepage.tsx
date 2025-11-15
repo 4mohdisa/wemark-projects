@@ -1,36 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 "use client"
 
 import { useState, useEffect } from 'react'
@@ -243,7 +210,7 @@ export default function WemarkHomepage() {
 
       {/* Featured Projects Section */}
       <section id="featured-projects" className="py-20" style={{ backgroundColor: 'var(--color-light-beige)' }}>
-        <div className="container mx-auto px-4">
+        <div className="container  max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
             <div className="mb-6">
               <span className="inline-block px-4 py-2 rounded-full text-sm font-medium" 
@@ -392,7 +359,7 @@ export default function WemarkHomepage() {
 
       {/* Process Section */}
       <section id="process" className="py-20" style={{ backgroundColor: 'var(--color-primary)' }}>
-        <div className="container mx-auto px-4">
+        <div className="container max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
             <div className="mb-6">
               <span className="inline-block px-4 py-2 rounded-full text-sm font-medium" 
@@ -463,7 +430,7 @@ export default function WemarkHomepage() {
 
       {/* Services Section */}
       <section id="services" className="py-20" style={{ backgroundColor: 'var(--color-accent)' }}>
-        <div className="container mx-auto px-4">
+        <div className="container max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
             <div className="mb-6">
               <span className="inline-block px-4 py-2 rounded-full text-sm font-medium" 
@@ -524,7 +491,7 @@ export default function WemarkHomepage() {
 
       {/* How We Do it */}
       <section className="py-20" style={{ backgroundColor: 'var(--bg-white)' }}>
-        <div className="container mx-auto px-4">
+        <div className="container max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-5xl font-bold mb-6" style={{ color: 'var(--btn-secondary-bg)' }}>How We Deliver Results</h2>
             <p className="text-xl max-w-3xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
@@ -807,7 +774,7 @@ export default function WemarkHomepage() {
 
       {/* Value Proposition Section */}
       <section className="py-20" style={{ backgroundColor: 'var(--color-accent)' }}>
-        <div className="container mx-auto px-4">
+        <div className="container max-w-7xl mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Left Column - Content */}
             <div>
@@ -890,7 +857,7 @@ export default function WemarkHomepage() {
 
       {/* About Section */}
       <section id="about" className="py-20" style={{ backgroundColor: 'var(--color-primary)' }}>
-        <div className="container mx-auto px-4">
+        <div className="container max-w-7xl mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Column - Content */}
             <div>
@@ -997,7 +964,7 @@ export default function WemarkHomepage() {
         
         {/* Team Members Section */}
         <div className="py-20 mt-20" style={{ backgroundColor: '#f8f9fa' }}>
-          <div className="container mx-auto px-4">
+          <div className="container max-w-7xl mx-auto px-4">
             <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold mb-6" style={{ color: '#1A2D3B' }}>
               Meet Our Team

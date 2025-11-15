@@ -109,7 +109,7 @@ export default function ProjectDetailsPageContent({ projectId }: ProjectDetailsP
 
       {/* Hero Section with Full-Width Image Carousel */}
       <section className="pt-24 pb-8">
-        <div className="container mx-auto px-4">
+        <div className="container max-w-7xl mx-auto px-4">
           {/* Full-Width Image Carousel */}
           <div className="mb-8">
             <div className="relative">
@@ -298,7 +298,7 @@ export default function ProjectDetailsPageContent({ projectId }: ProjectDetailsP
 
       {/* Floor Plans Section */}
       <section className="py-16" style={{ backgroundColor: 'white' }}>
-        <div className="container mx-auto px-4">
+        <div className="container max-w-7xl mx-auto px-4">
           <h2 className="text-3xl font-bold mb-8" style={{ color: 'var(--color-primary)' }}>Floor plans</h2>
           <div className="bg-white rounded-2xl shadow-lg p-8">
             <img 
@@ -312,7 +312,7 @@ export default function ProjectDetailsPageContent({ projectId }: ProjectDetailsP
 
       {/* Location Section */}
       <section className="py-16" style={{ backgroundColor: 'var(--color-light-beige)' }}>
-        <div className="container mx-auto px-4">
+        <div className="container max-w-7xl mx-auto px-4">
           <h2 className="text-3xl font-bold mb-8" style={{ color: 'var(--color-primary)' }}>Location</h2>
           <div className="bg-white rounded-2xl shadow-lg p-8">
             <div className="mb-4">

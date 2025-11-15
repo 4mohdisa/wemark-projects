@@ -154,7 +154,7 @@
   }
   
   /* Use Geist fonts for headings */
-  h1, h2, h3, h4, h5, h6 {
+  h1, h2 {
     font-family: var(--font-geist-sans), 'Geist', system-ui, sans-serif;
   }
 }

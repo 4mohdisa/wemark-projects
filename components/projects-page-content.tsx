@@ -30,7 +30,7 @@ export default function ProjectsPageContent() {
 
       {/* Hero Section */}
       <section className="py-20" style={{ backgroundColor: 'var(--color-primary)' }}>
-        <div className="container mx-auto px-4 text-center">
+        <div className="container mx-auto pt-12 px-4 text-center">
           <div className="max-w-4xl mx-auto">
             <h1 className="text-5xl md:text-6xl font-bold mb-6" style={{ color: 'var(--color-accent)' }}>
               Investment Projects
@@ -45,7 +45,7 @@ export default function ProjectsPageContent() {
 
       {/* Filters */}
       <section className="py-12">
-        <div className="container mx-auto px-4">
+        <div className="container max-w-7xl mx-auto px-4">
           <div className="flex flex-wrap justify-center gap-4 mb-12">
             <Button 
               variant={selectedStatus === 'all' ? 'default' : 'outline'}
@@ -117,7 +117,7 @@ export default function ProjectsPageContent() {
 
       {/* Projects Grid */}
       <section className="pb-20">
-        <div className="container mx-auto px-4">
+        <div className="container max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredProjects.map((project) => (
               <Card key={project.id} className="group cursor-pointer hover:shadow-2xl transition-all duration-500 border-0 overflow-hidden hover:-translate-y-2">
